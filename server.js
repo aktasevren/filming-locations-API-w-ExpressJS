@@ -35,7 +35,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hi, Filming Location Finder App /n Example : "https://www.locahost:3000/imdbid/tt12345678"');
+    res.send('Hi, Filming Location Finder App /n Example : "https://imdb-server-ljf3.onrender.com/imdbid/tt12345678"');
 })
 
 app.get('/imdbid/:id', (req, res) => {
