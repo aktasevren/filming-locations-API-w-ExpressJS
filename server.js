@@ -9,16 +9,16 @@ const port = 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(
     cors({
-        origin: ["http://localhost:3001", "http://localhost:3000","https://filming-location-finder.vercel.app"],
+        origin: ["http://localhost:3001", "http://localhost:3000", "https://filming-location-finder.vercel.app"],
         credentials: true,
-        
+
     })
 );
 
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://filming-location-finder.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -52,7 +52,7 @@ app.get('/imdbid/:id', (req, res) => {
             const locs = response.data.data.title.filmingLocations.edges;
             const locations = [];
             locs.map((loc) => locations.push(loc.node.text));
-            res.send(locations);
+            res.send(locations)
         })
 })
 app.listen(port, () => {
