@@ -33,7 +33,7 @@ app.get('/imdbid/:id', (req, res) => {
 
     console.log(`Request received for ${imdbid}`)
 
-    axios.get(`https://caching.graphql.imdb.com/?operationName=TitleFilmingLocationsPaginated&variables=%7B%22after%22%3A%22bGMxMDI1MTgy%22%2C%22const%22%3A%22${imdbid}%22%2C%22first%22%3A50%2C%22locale%22%3A%22en-US%22%2C%22originalTitleText%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22sha256Hash%22%3A%225e1b7378425e70f1d8220f92e9be1d471bdbbab659274c32a895b2f3ffc51214%22%2C%22version%22%3A1%7D%7D`,
+    axios.get(`https://caching.graphql.imdb.com/?operationName=TitleFilmingLocationsPaginated&variables=%7B%22after%22%3A%22bGMwMjkwODcz%22%2C%22const%22%3A%22${imdbid}%22%2C%22first%22%3A50%2C%22isAutoTranslationEnabled%22%3Afalse%2C%22locale%22%3A%22en-US%22%2C%22originalTitleText%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22sha256Hash%22%3A%22f8e058a92242ae7940109b6669584768279c3e874ad37d0a792ad24f43627501%22%2C%22version%22%3A1%7D%7D`,
         {
             headers: {
                 'Content-Type': 'application/json'
@@ -50,5 +50,13 @@ app.get('/imdbid/:id', (req, res) => {
           });
 })
 app.listen(port, () => {
-    console.log(`Filming Location App Started`)
+    console.log(`Filming Location Application Started`)
 });
+
+
+
+
+
+
+
+
