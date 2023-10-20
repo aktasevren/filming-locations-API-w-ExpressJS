@@ -1,14 +1,15 @@
-for example ; 
+## Filming Location Finder
+
+With this application you can get location/locations where movie filmed.
 
 
-https://imdb-server-ljf3.onrender.com/imdbid/tt0139371
+**Request Example** : ***https://imdb-server-ljf3.onrender.com/imdbid/tt10366206***
 
+**Response Example** :
+```
 
+["Wadi Rum Desert, Jordan","Rue Foyatier, Montmartre, Paris, France","Chateau de Chantilly, France","Arc de Triomphe, Place Charles de Gaulle, Paris, France","Studio Babelsberg, Potsdam, Germany","Montmartre, Paris 18, Paris, France","Krematorium Baumschulenweg, Berlin, Germany","Beelitz-Heilstätten, Beelitz, Brandenburg, Germany","Journal Square PATH Station, Jersey City, New Jersey, USA","Palais Garnier opera house, Paris, France","Basilique du Sacré-Coeur, Montmartre, Paris 18, Paris, France","Alte Nationalgalerie, Berlin, Germany","Porte des Lilas, Le Métro, Paris, France","Berlin, Germany","Germany","Place du Trocadéro Paris, France","Paris, France","France"]
 
-["Paris Charles de Gaulle Airport, 95700 Roissy-en-France, France",
-"Bordeaux, Gironde, France",
-"Hôtel des Dromonts, 40 Place des Dromonts, 74110 Avoriaz, France",
-"Chamonix, Haute-Savoie, France",
-"Erta Ale, Ethiopia",
-"Danakil Desert, Ethiopia",
-"Dallol, Ethiopia"]
+```
+
+![Alt text](./assets/image.png)

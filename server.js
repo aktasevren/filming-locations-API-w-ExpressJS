@@ -3,7 +3,7 @@ const axios = require("axios");
 const app = express();
 const cors = require("cors");
 
-const port = 3000;
+const port = 5000;
 
 
 app.use(express.urlencoded({ extended: false }));
@@ -23,9 +23,14 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-    res.send(
-        'Hi, Filming Location Finder App Example : "https://imdb-server-ljf3.onrender.com/imdbid/tt12345678"'
-        );
+    res.status(200).send(
+        `Hi, Filming Location Finder App Example : "https://imdb-server-ljf3.onrender.com/imdbid/tt10366206" <br/> <br/> 
+        <h4>Response Example</h4>
+    ["Wadi Rum Desert, Jordan",<br/>"Rue Foyatier, Montmartre, Paris, France",<br/>"Chateau de Chantilly, France",<br/>"Arc de Triomphe, Place Charles de Gaulle, Paris, France",<br/>
+    "Studio Babelsberg, Potsdam, Germany",<br/>"Montmartre, Paris 18, Paris, France",<br/>"Krematorium Baumschulenweg, Berlin, Germany"<br/>,"Beelitz-Heilstätten, Beelitz, Brandenburg, Germany",<br/>
+    "Journal Square PATH Station, Jersey City, New Jersey, USA",<br/>"Palais Garnier opera house, Paris, France",<br/>"Basilique du Sacré-Coeur, Montmartre, Paris 18, Paris, France",<br/>
+    "Alte Nationalgalerie, Berlin, Germany",<br/>"Porte des Lilas, Le Métro, Paris, France",<br/>"Berlin, Germany",<br/>"Germany","Place du Trocadéro Paris, France",<br/>"Paris, France",<br/> "France"]`
+    );
 })
 
 app.get('/imdbid/:id', (req, res) => {
@@ -39,15 +44,20 @@ app.get('/imdbid/:id', (req, res) => {
                 'Content-Type': 'application/json'
             }
         })
+
         .then((response) => {
-            const locs = response.data.data.title.filmingLocations.edges;
-            const locations = [];
-            locs.map((loc) => locations.push(loc.node.text));
-            res.send(locations)
+            if (response.data.data.title == null) {
+                res.json("Please check sent id value")
+            } else {
+                const locs = response.data.data.title.filmingLocations.edges;
+                const locations = [];
+                locs.map((loc) => locations.push(loc.node.text));
+                res.status(200).json(locations)
+            }
         })
         .catch(function (error) {
-            console.log(error);
-          });
+            res.status(500).send(error)
+        });
 })
 app.listen(port, () => {
     console.log(`Filming Location Application Started`)
@@ -55,7 +65,7 @@ app.listen(port, () => {
 
 
 
-
+module.exports = app;
 
 
 
