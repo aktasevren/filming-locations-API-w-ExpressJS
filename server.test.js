@@ -1,5 +1,4 @@
-//https://engineering.cimri.com/modern-testing-jest-ve-react-testing-library-part1-e9fe517ac845
-//https://engineering.cimri.com/modern-testing-jest-ve-react-testing-library-part-2-4e687f20f1c0
+
 
 const request = require("supertest");
 const app = require("./server");
