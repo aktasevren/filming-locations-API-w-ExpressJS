@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 
 app.get('/', (req, res) => {
     res.status(200).send(
-        `Hi, Filming Location Finder App Example : "https://imdb-server-ljf3.onrender.com/imdbid/tt10366206" <br/> <br/> 
+        `Hi ,<br/> <br/> Filming Location Finder API Example : "https://filming-locations-api-w-express-js.vercel.app/imdbid/tt10366206" <br/> <br/> 
         <h4>Response Example</h4>
     ["Wadi Rum Desert, Jordan",<br/>"Rue Foyatier, Montmartre, Paris, France",<br/>"Chateau de Chantilly, France",<br/>"Arc de Triomphe, Place Charles de Gaulle, Paris, France",<br/>
     "Studio Babelsberg, Potsdam, Germany",<br/>"Montmartre, Paris 18, Paris, France",<br/>"Krematorium Baumschulenweg, Berlin, Germany"<br/>,"Beelitz-Heilstätten, Beelitz, Brandenburg, Germany",<br/>
