@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 
 const port = 3000;
+const version = "24.2"
 
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -51,6 +52,7 @@ app.get('/imdbid/:id', (req, res) => {
                 locs.map((loc) => locations.push(loc.node.text));
                 const end = performance.now();
                 res.status(200).json({
+                    "version":version,
                     "imdbid": imdbid,
                     "locations": locations,
                     "runtime": end - start,
