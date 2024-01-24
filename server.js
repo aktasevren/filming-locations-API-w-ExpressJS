@@ -49,10 +49,10 @@ app.get('/imdbid/:id', (req, res) => {
                 console.log(response.data.data.title.filmingLocations.edges)
                 const locs = response.data.data.title.filmingLocations.edges;
                 const locations = [];
-                locs.map((loc) => locations.push(loc.node.text));
+                locs.map((loc, index) => locations.push([index, loc.node.text, loc.node.displayableProperty.qualifiersInMarkdownList[0].markdown]));
                 const end = performance.now();
                 res.status(200).json({
-                    "version":version,
+                    "version": version,
                     "imdbid": imdbid,
                     "locations": locations,
                     "runtime": end - start,
@@ -68,7 +68,3 @@ app.listen(port, () => {
 });
 
 module.exports = app;
-
-
-
-
