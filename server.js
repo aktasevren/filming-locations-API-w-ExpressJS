@@ -46,17 +46,20 @@ app.get('/imdbid/:id', (req, res) => {
             if (response.data.data.title == null) {
                 res.json("no such imdb id was found")
             } else {
-                console.log(response.data.data.title.filmingLocations.edges)
+                // console.log(response.data.data.title.filmingLocations.edges)
                 const locs = response.data.data.title.filmingLocations.edges;
-                const locations = [];
-                locs.map((loc, index) => locations.push([index, loc.node.text, loc.node.displayableProperty.qualifiersInMarkdownList[0].markdown]));
+
+                // const locations = [];
+                // locs.map((loc) => locations.push(loc.node.text));
                 const end = performance.now();
                 res.status(200).json({
                     "version": version,
                     "imdbid": imdbid,
-                    "locations": locations,
+                    "locations": locs,
                     "runtime": end - start,
                 })
+
+
             }
         })
         .catch(function (error) {
@@ -68,3 +71,12 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
