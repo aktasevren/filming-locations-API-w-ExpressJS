@@ -3,7 +3,7 @@ const axios = require("axios");
 const app = express();
 const cors = require("cors");
 
-const port = 3000;
+const port = 3001;
 const version = "24.2"
 
 app.use(express.urlencoded({ extended: false }));
@@ -36,13 +36,18 @@ app.get('/', (req, res) => {
 app.get('/imdbid/:id', (req, res) => {
     const start = performance.now();
     const imdbid = req.params.id
-    axios.get(`https://caching.graphql.imdb.com/?operationName=TitleFilmingLocationsPaginated&variables=%7B%22after%22%3A%22bGMwMjkwODcz%22%2C%22const%22%3A%22${imdbid}%22%2C%22first%22%3A50%2C%22isAutoTranslationEnabled%22%3Afalse%2C%22locale%22%3A%22en-US%22%2C%22originalTitleText%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22sha256Hash%22%3A%22f8e058a92242ae7940109b6669584768279c3e874ad37d0a792ad24f43627501%22%2C%22version%22%3A1%7D%7D`,
+    // console.log(`https://caching.graphql.imdb.com/?operationName=TitleFilmingLocationsPaginated&variables=%7B%22after%22%3A%22bGMwMjkwODcz%22%2C%22const%22%3A%22${imdbid}%22%2C%22first%22%3A50%2C%22isAutoTranslationEnabled%22%3Afalse%2C%22locale%22%3A%22en-US%22%2C%22originalTitleText%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22sha256Hash%22%3A%22f8e058a92242ae7940109b6669584768279c3e874ad37d0a792ad24f43627501%22%2C%22version%22%3A1%7D%7D`)
+    //              https://caching.graphql.imdb.com/?operationName=TitleFilmingLocationsPaginated&variables=%7B%22after%22%3A%22bGMwMjkwODcz%22%2C%22const%22%3A%22tt0076759%22%2C%22first%22%3A50%2C%22isAutoTranslationEnabled%22%3Afalse%2C%22locale%22%3A%22en-US%22%2C%22originalTitleText%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22sha256Hash%22%3A%229f2ac963d99baf72b7a108de141901f4caa8c03af2e1a08dfade64db843eff7b%22%2C%22version%22%3A1%7D%7D
+    
+    
+    axios.get(`https://caching.graphql.imdb.com/?operationName=TitleFilmingLocationsPaginated&variables=%7B%22after%22%3A%22bGMwMjkwODcz%22%2C%22const%22%3A%22${imdbid}%22%2C%22first%22%3A50%2C%22isAutoTranslationEnabled%22%3Afalse%2C%22locale%22%3A%22en-US%22%2C%22originalTitleText%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22sha256Hash%22%3A%229f2ac963d99baf72b7a108de141901f4caa8c03af2e1a08dfade64db843eff7b%22%2C%22version%22%3A1%7D%7D`,
         {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         .then((response) => {
+            
             if (response.data.data.title == null) {
                 res.json("no such imdb id was found")
             } else {
